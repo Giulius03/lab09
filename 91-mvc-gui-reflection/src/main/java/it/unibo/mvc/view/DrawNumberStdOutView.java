@@ -8,15 +8,14 @@ import it.unibo.mvc.api.DrawResult;
  * Graphical {@link DrawNumberView} implementation.
  */
 public final class DrawNumberStdOutView implements DrawNumberView {
-
     @Override
     public void setController(final DrawNumberController observer) {
-        //mah
+        //nothing to do
     }
 
     @Override
     public void start() {
-        //mah
+        //nothing to do
     }
 
     @Override
