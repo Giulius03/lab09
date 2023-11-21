@@ -10,11 +10,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -81,12 +78,15 @@ public class BadIOGUI {
         read.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                try (final BufferedReader r = new BufferedReader(new InputStreamReader(
+                /*try (final BufferedReader r = new BufferedReader(new InputStreamReader(
                     new FileInputStream(PATH), StandardCharsets.UTF_8))) {
                     String line = null;
                     while ((line = r.readLine()) != null) {
                         System.out.println(line);
-                    }
+                    }*/
+                try {
+                    final List<String> lines = Files.readAllLines(new File(PATH).toPath(), StandardCharsets.UTF_8);
+                    System.out.println(lines);
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(frame, ex, "Error", JOptionPane.ERROR_MESSAGE);
                     ex.printStackTrace();
